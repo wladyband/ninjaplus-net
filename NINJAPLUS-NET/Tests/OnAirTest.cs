@@ -10,6 +10,8 @@ namespace NINJAPLUS_NET.Tests
     public class OnAirTest
     {
         public BrowserSession browser;
+        private AcessarTelaPrincipalPage _acessaPage; 
+
         [SetUp]
         public void Setup()
         {
@@ -23,10 +25,13 @@ namespace NINJAPLUS_NET.Tests
                 Timeout = TimeSpan.FromSeconds(10)  
             };
             browser = new BrowserSession(config);
-            var page = new AcessarTelaPrincipalPage(browser);
-            page.acessaTelaSistema("http://automationpractice.com/index.php");
 
+            
             browser.MaximiseWindow();
+            _acessaPage = new AcessarTelaPrincipalPage(browser);
+            _acessaPage.acessaTelaSistema("http://automationpractice.com/index.php");
+
+
         }
 
         [Test]
