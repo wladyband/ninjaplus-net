@@ -1,5 +1,6 @@
 ﻿using Coypu;
 using Coypu.Drivers.Selenium;
+using NINJAPLUS_NET.Page;
 using NUnit.Framework;
 using System;
 using System.Threading;
@@ -22,6 +23,8 @@ namespace NINJAPLUS_NET.Tests
                 Timeout = TimeSpan.FromSeconds(10)  
             };
             browser = new BrowserSession(config);
+            var page = new AcessarTelaPrincipalPage(browser);
+            page.acessaTelaSistema("http://automationpractice.com/index.php");
 
             browser.MaximiseWindow();
         }
@@ -29,8 +32,8 @@ namespace NINJAPLUS_NET.Tests
         [Test]
         public void Test1()
         {
-            browser.Visit("http://automationpractice.com/index.php");
-            Assert.Pass();
+          
+
         }
 
 
