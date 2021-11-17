@@ -1,6 +1,8 @@
 ﻿using Coypu;
 using Coypu.Drivers.Selenium;
 using NUnit.Framework;
+using System;
+using System.Threading;
 
 namespace NINJAPLUS_NET.Tests
 {
@@ -16,11 +18,12 @@ namespace NINJAPLUS_NET.Tests
                 //Port = 5000,
                 SSL = false,
                 Driver = typeof(SeleniumWebDriver),
-                Browser = Coypu.Drivers.Browser.Chrome
-
+                Browser = Coypu.Drivers.Browser.Chrome,
+                Timeout = TimeSpan.FromSeconds(10)  
             };
-
             browser = new BrowserSession(config);
+
+            browser.MaximiseWindow();
         }
 
         [Test]
@@ -34,7 +37,6 @@ namespace NINJAPLUS_NET.Tests
         [TearDown]
         public void Finish()
         {
-
             browser.Dispose();
         }
     }
