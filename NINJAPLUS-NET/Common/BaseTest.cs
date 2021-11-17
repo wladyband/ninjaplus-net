@@ -3,14 +3,17 @@ using Coypu.Drivers.Selenium;
 using NINJAPLUS_NET.Page;
 using NUnit.Framework;
 using System;
-using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace NINJAPLUS_NET.Tests
+namespace NINJAPLUS_NET.Common
 {
-    public class OnAirTest
+    public class BaseTest
     {
         public BrowserSession browser;
-        private AcessarTelaPrincipalPage _acessaPage; 
+      
 
         [SetUp]
         public void Setup()
@@ -22,25 +25,14 @@ namespace NINJAPLUS_NET.Tests
                 SSL = false,
                 Driver = typeof(SeleniumWebDriver),
                 Browser = Coypu.Drivers.Browser.Chrome,
-                Timeout = TimeSpan.FromSeconds(10)  
+                Timeout = TimeSpan.FromSeconds(10)
             };
             browser = new BrowserSession(config);
 
-            
+
             browser.MaximiseWindow();
-            _acessaPage = new AcessarTelaPrincipalPage(browser);
-            _acessaPage.acessaTelaSistema("http://automationpractice.com/index.php");
-
-
+            browser.Visit("http://automationpractice.com/index.php");
         }
-
-        [Test]
-        public void Test1()
-        {
-          
-
-        }
-
 
         [TearDown]
         public void Finish()
