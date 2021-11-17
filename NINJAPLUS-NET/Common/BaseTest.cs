@@ -12,7 +12,7 @@ namespace NINJAPLUS_NET.Common
 {
     public class BaseTest
     {
-        public BrowserSession browser;
+        protected BrowserSession Browser;
       
 
         [SetUp]
@@ -27,17 +27,17 @@ namespace NINJAPLUS_NET.Common
                 Browser = Coypu.Drivers.Browser.Chrome,
                 Timeout = TimeSpan.FromSeconds(10)
             };
-            browser = new BrowserSession(config);
+            Browser = new BrowserSession(config);
 
 
-            browser.MaximiseWindow();
-            browser.Visit("http://automationpractice.com/index.php");
+            Browser.MaximiseWindow();
+            Browser.Visit("http://automationpractice.com/index.php");
         }
 
         [TearDown]
         public void Finish()
         {
-            browser.Dispose();
+            Browser.Dispose();
         }
     }
 }
