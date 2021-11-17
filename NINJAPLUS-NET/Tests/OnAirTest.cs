@@ -1,11 +1,10 @@
-using Coypu;
+﻿using Coypu;
 using Coypu.Drivers.Selenium;
 using NUnit.Framework;
-using System.Threading;
 
-namespace NINJAPLUS_NET
+namespace NINJAPLUS_NET.Tests
 {
-    public class Tests
+    public class OnAirTest
     {
         public BrowserSession browser;
         [SetUp]
@@ -18,7 +17,7 @@ namespace NINJAPLUS_NET
                 SSL = false,
                 Driver = typeof(SeleniumWebDriver),
                 Browser = Coypu.Drivers.Browser.Chrome
-                
+
             };
 
             browser = new BrowserSession(config);
@@ -35,9 +34,8 @@ namespace NINJAPLUS_NET
         [TearDown]
         public void Finish()
         {
-            
+
             browser.Dispose();
         }
-
     }
 }
